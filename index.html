@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Một lời xin lỗi 🫰</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff5f7;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .text {
+            font-size: 20px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .line {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: showLine 0.8s ease forwards;
+            margin-bottom: 12px;
+        }
+
+        @keyframes showLine {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            text-align: center;
+            font-size: 35px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .text {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div id="message" class="text"></div>
+
+    <div id="heart" class="heart" style="display:none;">
+        🫰 ❤️
+    </div>
+</div>
+
+<script>
+
+const messages = [
+    "Nào rảnh e hãng đọc nhé.",
+
+    "Qua nay a nghĩ rồi, hôm t2 lẽ ra a nên bảo lại với e 1 câu (a cứ nghĩ e ko đi đâu cả),",
+
+    "đã thế hôm đó a mới bảo a Hiển vs Phương và Linh sớm thôi còn mấy a ở trọ đến tối a mới nhắn bảo.",
+
+    "Nên thành ra hiểu nhầm, a về cũng k có biết là e đi ăn vs b, trong đầu cứ nghĩ là về cắt bánh,",
+
+    "mãi sau Trọng vs Linh có bảo Thảo đi ăn tý về nên a mới đợi.",
+
+    "Từ đầu cũng do a sơ suất và suy nghĩ linh tinh.",
+
+    "Xin lũi e nhiều🫰,",
+
+    "cũng xin lũi vì chuyện qua r mà a lại nói lại nữa:<.",
+
+    "Mong e bỏ qua nhe👏"
+];
+
+const messageElement = document.getElementById("message");
+const heartElement = document.getElementById("heart");
+
+let index = 0;
+
+function showNextLine() {
+
+    if (index >= messages.length) {
+        heartElement.style.display = "block";
+        return;
+    }
+
+    const line = document.createElement("div");
+
+    line.className = "line";
+    line.innerText = messages[index];
+
+    messageElement.appendChild(line);
+
+    index++;
+
+    setTimeout(showNextLine, 1800);
+}
+
+showNextLine();
+
+</script>
+
+</body>
+</html>
